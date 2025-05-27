@@ -7,16 +7,18 @@ from streamlit_folium import st_folium
 
 st.title("📍 배송 위치 기반 군집 분석 (Folium 지도 시각화)")
 
-# 데이터 불러오기
+import streamlit as st
+import pandas as pd
+
 @st.cache_data
 def load_data():
-    df = pd.read_csv("Delivery.csv")
+    url = "https://raw.githubusercontent.com/dddowobbb/clustering/main/Delivery%20-%20Delivery.csv"
+    df = pd.read_csv(url)
     return df
 
 df = load_data()
 st.subheader("데이터 미리보기")
 st.dataframe(df)
-
 # 위치 컬럼 지정
 lat_col = "Latitude"
 lon_col = "Longitude"
