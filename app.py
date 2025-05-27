@@ -48,11 +48,12 @@ for _, row in loc_df.iterrows():
     folium.CircleMarker(
         location=[row[lat_col], row[lon_col]],
         radius=5,
-        color=cluster_colors[row["Cluster"] % len(cluster_colors)],
+        color=cluster_colors[int(row["Cluster"]) % len(cluster_colors)],
         fill=True,
         fill_opacity=0.7,
         popup=f"Cluster {row['Cluster']}"
     ).add_to(m)
+
 
 st.subheader("🌍 군집 결과 지도")
 st_folium(m, width=700, height=500)
